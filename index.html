@@ -73,7 +73,7 @@
     // ❗ Debug properly using the Console
 
     // 👉 CHALLENGE 1
-    function profileActivation() {
+    function profileActivation(profile, reason) {
       // 🧠 profileActivation takes two arguments, profile and reason, which are an object and a string respectively
       //  The reason arg is only used -and therefore required- to deactivate profiles, not to activate them
       //  The profile arg has an `active` property holding a Boolean value
@@ -85,6 +85,30 @@
       //    * If the profile is active but it has a `reason` prop, return the string "confirm status manually"
       //    * If the profile is **missing** an `active` prop, return the string "impossible to ascertain status"
       // 🌟 HINT: to confirm the existence of a prop, check that its value is not undefined
+      //profile.active = false
+      //reason = 'because'
+      if (profile.active === true && reason !== undefined) {
+        profile.active = false;
+        profile.reason = 'because';
+        return profile;
+      }
+      if (profile.active === false && profile.reason !== undefined) {
+        profile.active = true;
+        delete profile.reason;
+        return profile;
+      }
+      // edgecases
+      if (profile.active === false && profile.reason === undefined) {
+        
+        return 'confirm status manually'
+      }
+      if (profile.active === true && profile.reason !== undefined) {
+        return 'confirm status manually'
+      }
+      if (profile.active === undefined) {
+        return "impossible to ascertain status"
+      }
+
     }
 
     // 👉 CHALLENGE 2
