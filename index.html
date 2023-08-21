@@ -92,7 +92,7 @@
         profile.reason = 'because';
         return profile;
       }
-      if (profile.active === false && profile.reason !== undefined) {
+      else if (profile.active === false && profile.reason !== undefined) {
         profile.active = true;
         delete profile.reason;
         return profile;
