@@ -162,9 +162,11 @@
 
       
       for (let element in obj) {
+        //edge case
         if (element.length > 9) {
           return "shorten all prop names to 9 chars or less"
         }
+        //transformations
         if (obj[element] === 0) {
           obj[element] = false; 
         }
@@ -179,7 +181,7 @@
     }
 
     // 👉 CHALLENGE 4
-    function scrub() {
+    function scrub(text, forbidden) {
       // 🧠 scrub takes a string "text" as its first argument, and an array of forbidden words "forbidden" as its second
       // Any word in the text included in the array of forbidden words is replaced with a word of equal length but made of lowcase "x"
       // The scrubbed text is then returned from the function, as seen in the examples below
@@ -191,6 +193,27 @@
       //    scrub("aces high", ["high", "aces", "hearts"]) // returns "xxxx xxxx"
       //    scrub("", ["high", "aces""]) // returns ""
       // 🌟 HINT: useful array methods to use are `push`, `indexOf`, `split`, `join`
+      let text_array = text.split(' ')
+
+      for (let i = 0; i < text_array.length; i++) {
+          if (forbidden.includes(text_array[i])) {
+            let length = text_array[i].length
+            text_array[i] = ''
+            for (let letter_count = 0; letter_count < length; letter_count++) {
+            text_array[i] += 'x';
+            }
+            
+          }
+        
+        
+      }
+      
+      let result_string = text_array.toString()
+      
+      for (let i = 0; i < result_string.length; i++) {
+        result_string = result_string.replace(',', ' ')
+      }
+      return result_string
     }
 
     // 👉 CHALLENGE 5
