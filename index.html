@@ -259,7 +259,7 @@
       
       return final_number
     }
-
+//
     // 👉 CHALLENGE 6 (bonus, NOT graded)
     function diceRolls() {
       // 🧠 diceRolls takes no arguments and returns a number
@@ -268,6 +268,18 @@
       // 🌟 HINT: research using `Math.random` to obtain a number from 1 to 6
       // 🌟 HINT: use `while(true)` to throw the dice indefinitely, but avoid an infinite loop by making sure to break out eventually
       // 🌟 HINT: you need to keep track of the total number of throws, as well as how many sixes in a row
+      let six_count = 0, throw_count = 0
+      let number 
+      while (six_count < 3) {
+        number = Math.random() * (6 - 1) + 1;
+        number = Math.floor(number)
+        throw_count++
+        if (number === 6) {
+          six_count++
+        }
+      }
+      console.log(throw_count)
+      return throw_count
     }
 
     // 🧪 TESTS, do not make any changes below this line ===================
